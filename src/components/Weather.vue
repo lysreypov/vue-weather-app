@@ -40,6 +40,7 @@
             <input
               type="button"
               value="Change Location"
+              @click="changeLocation"
               class="btn change-btn btn-primary"
             />
           </form>
@@ -107,6 +108,11 @@ export default {
       d.getDate() + "-" + this.monthNames[d.getMonth()] + "-" + d.getFullYear();
     this.time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
     console.log(weatherData);
+  },
+  methods: {
+    changeLocation() {
+      window.location.reload();
+    },
   },
 };
 </script>
