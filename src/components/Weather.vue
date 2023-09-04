@@ -21,8 +21,8 @@
         <table class="m-4">
           <tbody>
             <tr>
-              <th>Sea Level</th>
-              <td>{{ sea_level }}</td>
+              <th>Real Feel</th>
+              <td>{{ feels_like }}&deg;</td>
             </tr>
             <tr>
               <th>Humidity</th>
@@ -34,7 +34,7 @@
             </tr>
           </tbody>
         </table>
-        <DaysWeatherVue />
+        <DaysWeatherVue :cityname="cityname" />
         <div id="div_Form" class="d-flex m-3 justify-content-center">
           <form action="">
             <input
@@ -63,13 +63,14 @@ export default {
   },
   data() {
     return {
+      cityname: this.city,
       temperature: null,
       description: null,
       iconUrl: null,
       date: null,
       name: null,
       time: null,
-      sea_level: null,
+      feels_like: null,
       wind: null,
       country: null,
       humidity: null,
@@ -97,7 +98,7 @@ export default {
     this.description = weatherData.weather[0].description;
     this.name = weatherData.name;
     this.wind = weatherData.wind.speed;
-    this.sea_level = weatherData.main.sea_level;
+    this.feels_like = Math.round(weatherData.main.feels_like);
     this.country = weatherData.sys.country;
     this.humidity = weatherData.main.humidity;
     this.iconUrl = `https://api.openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
@@ -196,10 +197,9 @@ table,
 tr:hover {
   color: red;
 }
-/* .change-btn { */
-/* background-image: linear-gradient(to right, cyan, magenta); */
 /* } */
 .change-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
 }
 </style>

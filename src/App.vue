@@ -57,7 +57,4 @@ body {
   margin-top: 5rem;
   text-align: center;
 }
-/* .btn-search { */
-/* background-image: linear-gradient(to right, cyan, magenta); */
-/* } */
 </style>
